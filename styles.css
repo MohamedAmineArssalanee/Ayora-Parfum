@@ -201,7 +201,7 @@ body.rtl .font-serif { font-family: var(--font-arabic); }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: #ffffff;
+  background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 40%, #1a0a2e 100%);
 }
 .hero-grain {
   position: absolute; inset: 0;
@@ -212,7 +212,7 @@ body.rtl .font-serif { font-family: var(--font-arabic); }
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.05;
+  opacity: 0.15;
 }
 .hero-orb-1 {
   width: 600px; height: 600px;
@@ -253,7 +253,7 @@ body.rtl .font-serif { font-family: var(--font-arabic); }
   font-size: clamp(2.8rem, 7vw, 5.5rem);
   font-weight: 300;
   line-height: 1.1;
-  color: var(--purple-dark);
+  color: var(--white);
   margin-bottom: 24px;
   font-style: italic;
 }
@@ -261,7 +261,7 @@ body.rtl .font-serif { font-family: var(--font-arabic); }
 .hero-sub {
   font-size: 0.9rem;
   letter-spacing: 0.1em;
-  color: rgba(30,10,60,0.6);
+  color: rgba(255,255,255,0.6);
   margin-bottom: 48px;
   max-width: 480px; margin-left: auto; margin-right: auto;
 }
@@ -290,8 +290,8 @@ body.rtl .font-serif { font-family: var(--font-arabic); }
 .btn-secondary {
   padding: 15px 40px;
   background: transparent;
-  color: var(--purple-dark);
-  border: 1px solid rgba(30,10,60,0.3);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
   cursor: pointer;
   font-family: var(--font-sans);
   font-size: 0.75rem; font-weight: 400;
@@ -304,7 +304,7 @@ body.rtl .font-serif { font-family: var(--font-arabic); }
 .hero-scroll {
   position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 8px;
-  color: rgba(30,10,60,0.4);
+  color: rgba(255,255,255,0.4);
   font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
   animation: bounce 2s ease-in-out infinite;
 }
