@@ -222,6 +222,7 @@ function renderProducts() {
       <div class="product-badge">${p.badge}</div>
       <div class="delivery-badge">🚚 ${state.lang === 'ar' ? 'توصيل المغرب' : 'Livraison Maroc'}</div>
       <div class="product-img-wrap" onclick="openProductModal(${p.id})" style="cursor:pointer">
+        <div class="product-img-bg" style="background-image:url('${p.image}')"></div>
         <img class="product-img" src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.opacity='0.3'">
         <button class="wishlist-btn ${state.wishlist.includes(p.id) ? 'active' : ''}"
           onclick="toggleWishlist(event, ${p.id})" title="${t('wishlist')}">
@@ -278,6 +279,7 @@ window.openProductModal = function(id) {
       imgSide.innerHTML = `
         <div class="modal-gallery">
           <div class="gallery-main-wrap">
+            <div class="gallery-bg-blur" id="gallery-bg-blur" style="background-image:url('${images[0]}')"></div>
             <button class="gallery-arrow gallery-prev" onclick="galleryNav(-1)">&#8592;</button>
             <img id="modal-img" class="gallery-main-img" src="${images[0]}" alt="${p.name}">
             <button class="gallery-arrow gallery-next" onclick="galleryNav(1)">&#8594;</button>
@@ -289,7 +291,9 @@ window.openProductModal = function(id) {
           </div>
         </div>`;
     } else {
-      imgSide.innerHTML = `<img id="modal-img" src="${images[0]}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover">`;
+      imgSide.innerHTML = `
+        <div class="modal-img-blurbg" style="background-image:url('${images[0]}')"></div>
+        <img id="modal-img" src="${images[0]}" alt="${p.name}">`;
     }
   }
 
@@ -375,11 +379,14 @@ window.gallerySet = function(i) {
 };
 function galleryUpdate() {
   const mainImg = el('modal-img');
+  const blurBg = el('gallery-bg-blur');
   const thumbs = document.querySelectorAll('#gallery-thumbs .gallery-thumb');
+  const newSrc = state.galleryImages[state.galleryIndex];
   if (mainImg) {
     mainImg.style.opacity = '0';
     setTimeout(() => {
-      mainImg.src = state.galleryImages[state.galleryIndex];
+      mainImg.src = newSrc;
+      if (blurBg) blurBg.style.backgroundImage = `url('${newSrc}')`;
       mainImg.style.opacity = '1';
     }, 150);
   }
