@@ -347,7 +347,7 @@ function renderSimilar(p) {
     <div style="display:flex;gap:12px">
       ${similar.map(s => `
         <div style="flex:1;border:1px solid var(--border);padding:12px;cursor:pointer" onclick="openProductModal(${s.id})">
-          <img src="${s.image}" alt="${s.name}" style="width:100%;height:90px;object-fit:contain;background:var(--off-white);margin-bottom:8px;border-radius:4px;padding:6px;box-sizing:border-box">
+          <img src="${s.image}" alt="${s.name}" style="width:100%;height:90px;object-fit:contain;background:linear-gradient(145deg,#f8f4ef,#ede8df);margin-bottom:8px;border-radius:4px;box-sizing:border-box;mix-blend-mode:multiply">
           <div style="font-size:0.6rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase">${s.brand}</div>
           <div style="font-family:var(--font-serif);font-style:italic;color:var(--purple);font-size:0.9rem">${state.lang === 'ar' ? s.name_ar : s.name}</div>
           <div style="font-size:0.75rem;color:var(--text-muted)">${s.prices['5ml']} MAD / 5ml</div>
