@@ -222,7 +222,6 @@ function renderProducts() {
       <div class="product-badge">${p.badge}</div>
       <div class="delivery-badge">🚚 ${state.lang === 'ar' ? 'توصيل المغرب' : 'Livraison Maroc'}</div>
       <div class="product-img-wrap" onclick="openProductModal(${p.id})" style="cursor:pointer">
-        <div class="product-img-bg" style="background-image:url('${p.image}')"></div>
         <img class="product-img" src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.opacity='0.3'">
         <button class="wishlist-btn ${state.wishlist.includes(p.id) ? 'active' : ''}"
           onclick="toggleWishlist(event, ${p.id})" title="${t('wishlist')}">
@@ -279,7 +278,6 @@ window.openProductModal = function(id) {
       imgSide.innerHTML = `
         <div class="modal-gallery">
           <div class="gallery-main-wrap">
-            <div class="gallery-bg-blur" id="gallery-bg-blur" style="background-image:url('${images[0]}')"></div>
             <button class="gallery-arrow gallery-prev" onclick="galleryNav(-1)">&#8592;</button>
             <img id="modal-img" class="gallery-main-img" src="${images[0]}" alt="${p.name}">
             <button class="gallery-arrow gallery-next" onclick="galleryNav(1)">&#8594;</button>
@@ -291,9 +289,7 @@ window.openProductModal = function(id) {
           </div>
         </div>`;
     } else {
-      imgSide.innerHTML = `
-        <div class="modal-img-blurbg" style="background-image:url('${images[0]}')"></div>
-        <img id="modal-img" src="${images[0]}" alt="${p.name}">`;
+      imgSide.innerHTML = `<img id="modal-img" src="${images[0]}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover">`;
     }
   }
 
@@ -351,7 +347,7 @@ function renderSimilar(p) {
     <div style="display:flex;gap:12px">
       ${similar.map(s => `
         <div style="flex:1;border:1px solid var(--border);padding:12px;cursor:pointer" onclick="openProductModal(${s.id})">
-          <img src="${s.image}" alt="${s.name}" style="width:100%;height:90px;object-fit:cover;background:var(--cream);margin-bottom:8px;border-radius:4px;mix-blend-mode:multiply">
+          <img src="${s.image}" alt="${s.name}" style="width:100%;height:90px;object-fit:contain;background:var(--off-white);margin-bottom:8px;border-radius:4px;padding:6px;box-sizing:border-box">
           <div style="font-size:0.6rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase">${s.brand}</div>
           <div style="font-family:var(--font-serif);font-style:italic;color:var(--purple);font-size:0.9rem">${state.lang === 'ar' ? s.name_ar : s.name}</div>
           <div style="font-size:0.75rem;color:var(--text-muted)">${s.prices['5ml']} MAD / 5ml</div>
@@ -379,14 +375,11 @@ window.gallerySet = function(i) {
 };
 function galleryUpdate() {
   const mainImg = el('modal-img');
-  const blurBg = el('gallery-bg-blur');
   const thumbs = document.querySelectorAll('#gallery-thumbs .gallery-thumb');
-  const newSrc = state.galleryImages[state.galleryIndex];
   if (mainImg) {
     mainImg.style.opacity = '0';
     setTimeout(() => {
-      mainImg.src = newSrc;
-      if (blurBg) blurBg.style.backgroundImage = `url('${newSrc}')`;
+      mainImg.src = state.galleryImages[state.galleryIndex];
       mainImg.style.opacity = '1';
     }, 150);
   }
@@ -619,7 +612,7 @@ window.renderQuizStep = function() {
         <div class="quiz-result-name">${state.lang === 'ar' ? result?.name_ar : result?.name}</div>
         <div style="font-size:0.75rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px">${result?.brand || ''}</div>
         ${result ? `
-          <img src="${result.image}" alt="${result.name}" style="width:150px;height:150px;object-fit:cover;margin:0 auto 20px;display:block;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.15);mix-blend-mode:multiply;background:var(--cream)">
+          <img src="${result.image}" alt="${result.name}" style="width:150px;height:150px;object-fit:cover;margin:0 auto 20px;display:block;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.15)">
           <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:24px;max-width:320px">${tObj(result.description)}</p>
           <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
             <span style="padding:4px 12px;background:rgba(201,169,110,0.1);border:1px solid var(--gold);border-radius:20px;font-size:0.7rem;color:var(--gold)">${result.prices['5ml']} MAD / 5ml</span>

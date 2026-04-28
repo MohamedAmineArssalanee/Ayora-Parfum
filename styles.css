@@ -434,43 +434,25 @@ body.rtl .delivery-badge { right: auto; left: 60px; }
   aspect-ratio: 3 / 4;
   overflow: hidden;
   position: relative;
-  background: var(--cream);
+  background: var(--off-white);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* Blurred background layer — filled by JS with same src as the product image */
-.product-img-bg {
-  position: absolute;
-  inset: -20px;
-  background-size: cover;
-  background-position: center;
-  filter: blur(18px) brightness(1.08) saturate(1.1);
-  transform: scale(1.12);
-  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: 0;
-}
-.product-card:hover .product-img-bg { transform: scale(1.18); }
-/* Gradient overlay on top of blurred bg */
 .product-img-wrap::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(61,31,94,0.3) 0%, rgba(0,0,0,0.04) 60%, transparent 100%);
-  z-index: 1;
+  background: linear-gradient(to top, rgba(0,0,0,0.18) 0%, transparent 40%);
 }
-/* Actual product image — shown crisp with contain, no white edges */
 .product-img {
-  position: relative;
-  z-index: 2;
-  width: 88%;
-  height: 88%;
+  width: 100%; height: 100%;
   object-fit: contain;
   object-position: center center;
   display: block;
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.22));
+  padding: 12px;
 }
-.product-card:hover .product-img { transform: scale(1.06); }
+.product-card:hover .product-img { transform: scale(1.04); }
 
 .wishlist-btn {
   position: absolute; bottom: 16px; right: 16px; z-index: 3;
@@ -551,35 +533,16 @@ body.rtl .wishlist-btn { right: auto; left: 16px; }
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--cream);
+  background: var(--off-white);
 }
-/* Modal single image with blurred bg */
 .modal-img-side > img {
-  position: relative;
-  z-index: 2;
-  width: 82%;
-  height: 82%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center center;
   display: block;
-  margin: auto;
-  filter: drop-shadow(0 12px 32px rgba(0,0,0,0.25));
-}
-.modal-img-side > .modal-img-blurbg {
-  position: absolute;
-  inset: -20px;
-  background-size: cover;
-  background-position: center;
-  filter: blur(22px) brightness(1.08) saturate(1.1);
-  transform: scale(1.15);
-  z-index: 0;
-}
-.modal-img-side::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(61,31,94,0.15) 0%, transparent 60%);
-  z-index: 1;
-  pointer-events: none;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
 /* ── Product Image Gallery ── */
@@ -594,39 +557,19 @@ body.rtl .wishlist-btn { right: auto; left: 16px; }
   flex: 1;
   min-height: 0;
   overflow: hidden;
-  background: var(--cream);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* Blurred gallery background */
-.gallery-bg-blur {
-  position: absolute;
-  inset: -20px;
-  background-size: cover;
-  background-position: center;
-  filter: blur(22px) brightness(1.08) saturate(1.1);
-  transform: scale(1.15);
-  z-index: 0;
-  transition: background-image 0.3s ease;
-}
-.gallery-main-wrap::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(61,31,94,0.15) 0%, transparent 60%);
-  z-index: 1;
-  pointer-events: none;
+  background: var(--off-white);
 }
 .gallery-main-img {
-  position: relative;
-  z-index: 2;
-  width: 82%;
-  height: 82%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center center;
   display: block;
+  padding: 20px;
+  box-sizing: border-box;
   transition: opacity 0.3s ease;
-  filter: drop-shadow(0 12px 32px rgba(0,0,0,0.25));
 }
 .gallery-arrow {
   position: absolute;
@@ -659,15 +602,15 @@ body.rtl .wishlist-btn { right: auto; left: 16px; }
 .gallery-thumb {
   width: 56px; height: 56px;
   object-fit: contain;
-  background: var(--cream);
+  background: var(--off-white);
   cursor: pointer;
   border-radius: 5px;
   border: 2px solid transparent;
-  opacity: 0.65;
+  opacity: 0.6;
   transition: all 0.2s ease;
   flex-shrink: 0;
+  padding: 3px;
   box-sizing: border-box;
-  padding: 4px;
 }
 .gallery-thumb:hover { opacity: 0.82; }
 .gallery-thumb.active {
@@ -773,10 +716,10 @@ body.rtl #cart-sidebar.open { transform: translateX(0); }
 .cart-item-img {
   width: 70px; height: 70px;
   object-fit: contain;
-  background: var(--cream);
+  background: var(--off-white);
   flex-shrink: 0;
   border-radius: 4px;
-  padding: 6px;
+  padding: 4px;
   box-sizing: border-box;
 }
 .cart-item-info { flex: 1; }
