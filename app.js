@@ -347,7 +347,7 @@ function renderSimilar(p) {
     <div style="display:flex;gap:12px">
       ${similar.map(s => `
         <div style="flex:1;border:1px solid var(--border);padding:12px;cursor:pointer" onclick="openProductModal(${s.id})">
-          <img src="${s.image}" alt="${s.name}" style="width:100%;height:90px;object-fit:contain;background:var(--off-white);margin-bottom:8px;border-radius:4px;padding:6px;box-sizing:border-box">
+          <img src="${s.image}" alt="${s.name}" style="width:100%;height:90px;object-fit:cover;background:var(--cream);margin-bottom:8px;border-radius:4px;mix-blend-mode:multiply">
           <div style="font-size:0.6rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase">${s.brand}</div>
           <div style="font-family:var(--font-serif);font-style:italic;color:var(--purple);font-size:0.9rem">${state.lang === 'ar' ? s.name_ar : s.name}</div>
           <div style="font-size:0.75rem;color:var(--text-muted)">${s.prices['5ml']} MAD / 5ml</div>
@@ -612,7 +612,7 @@ window.renderQuizStep = function() {
         <div class="quiz-result-name">${state.lang === 'ar' ? result?.name_ar : result?.name}</div>
         <div style="font-size:0.75rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:20px">${result?.brand || ''}</div>
         ${result ? `
-          <img src="${result.image}" alt="${result.name}" style="width:150px;height:150px;object-fit:cover;margin:0 auto 20px;display:block;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.15)">
+          <img src="${result.image}" alt="${result.name}" style="width:150px;height:150px;object-fit:cover;margin:0 auto 20px;display:block;border-radius:8px;box-shadow:0 8px 32px rgba(0,0,0,0.15);mix-blend-mode:multiply;background:var(--cream)">
           <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:24px;max-width:320px">${tObj(result.description)}</p>
           <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
             <span style="padding:4px 12px;background:rgba(201,169,110,0.1);border:1px solid var(--gold);border-radius:20px;font-size:0.7rem;color:var(--gold)">${result.prices['5ml']} MAD / 5ml</span>
