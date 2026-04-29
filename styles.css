@@ -443,15 +443,11 @@ body.rtl .delivery-badge { right: auto; left: 60px; }
 .product-img-bg {
   display: none;
 }
-/* Subtle gradient overlay at bottom for elegance */
+/* No overlay — pure white only */
 .product-img-wrap::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(61,31,94,0.08) 0%, transparent 50%);
-  z-index: 1;
-  pointer-events: none;
+  display: none;
 }
-/* Actual product image — crisp on pure white */
+/* Product image — no shadow, no filter, uniform white */
 .product-img {
   position: relative;
   z-index: 2;
@@ -461,7 +457,7 @@ body.rtl .delivery-badge { right: auto; left: 60px; }
   object-position: center center;
   display: block;
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.12));
+  filter: none;
 }
 .product-card:hover .product-img { transform: scale(1.06); }
 
